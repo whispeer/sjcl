@@ -491,7 +491,7 @@ sjcl.bitArray = {
  * @author Mike Hamburg
  * @author Dan Boneh
  */
- 
+
 /** @namespace UTF-8 strings */
 sjcl.codec.utf8String = {
   /** Convert from a bitArray to a UTF-8 string. */
@@ -501,12 +501,12 @@ sjcl.codec.utf8String = {
       if ((i&3) === 0) {
         tmp = arr[i/4];
       }
-      out += String.fromCharCode(tmp >>> 24);
+      out += String.fromCharCode(tmp >>> 8 >>> 8 >>> 8);
       tmp <<= 8;
     }
     return decodeURIComponent(escape(out));
   },
-  
+
   /** Convert from a UTF-8 string to a bitArray. */
   toBits: function (str) {
     str = unescape(encodeURIComponent(str));
